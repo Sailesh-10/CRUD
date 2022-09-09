@@ -9,7 +9,7 @@
             <div class="col-6">
                 <div class="p-5">
                     <div class="text-center">
-                        <h1 class="h4 text-gray-900 mb-4">Create a Post!</h1>
+                        <h1 class="h4 text-gray-900 mb-4">Edit a Post!</h1>
                     </div>
                     <form action="{{route('post.update', $post->id)}}" method="POST">
                         @csrf

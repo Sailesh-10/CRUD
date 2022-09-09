@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CommentController;
 
 
@@ -31,3 +32,12 @@ Route::post('/post/store', [PostController::class, 'store'])->name('post.store')
 Route::get('/post/{id}/edit', [PostController::class, 'edit'])->name('post.edit');
 Route::put('/post/{id}/update', [PostController::class, 'update'])->name('post.update');
 Route::delete('/post/{id}/delete', [PostController::class, 'delete'])->name('post.delete');
+Route::get('/admin/login', [AdminController::class, 'login'])->name('admin.login');
+Route::get('/admin/dash', [AdminController::class, 'home'])->name('admin.dash');
+Route::get('/status/{id}/edit', [AdminController::class, 'StatusEdit'])->name('status.edit');
+Route::put('/status/{id}/update', [AdminController::class, 'StatusUpdate'])->name('status.update');
+Route::delete('/status/{id}/delete', [AdminController::class, 'delete'])->name('status.delete');
+Route::get('/admin/users', [AdminController::class, 'ShowUsers'])->name('admin.users');
+Route::delete('/users/{id}/delete', [AdminController::class, 'deleteUser'])->name('user.delete');
+Route::get('/user/add', [AdminController::class, 'addUser'])->name('user.add');
+Route::post('/user/save', [AdminController::class, 'UserSave'])->name('user.save');
