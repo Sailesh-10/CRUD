@@ -19,7 +19,7 @@
                 <table class="table  " id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr class="bg-primary text-white">
-                            <th>Post ID</th>
+                            <th>Post Id</th>
                             <th>Title</th>
                             <th>Description</th>
 
