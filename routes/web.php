@@ -21,6 +21,10 @@ use App\Http\Controllers\CommentController;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/about', function () {return view('front.about');});
+Route::get('/services', function () {return view('front.services');});
+Route::get('/contact', function () {return view('front.contact');});
+
 Route::get('/user/login', [UserController::class, 'login'])->name('user.login');
 Route::get('/user/register', [UserController::class, 'register'])->name('user.register');
 Route::post('/user/check', [UserController::class, 'loginCheck'])->name('user.check');
