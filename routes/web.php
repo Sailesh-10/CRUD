@@ -41,3 +41,6 @@ Route::get('/admin/users', [AdminController::class, 'ShowUsers'])->name('admin.u
 Route::delete('/users/{id}/delete', [AdminController::class, 'deleteUser'])->name('user.delete');
 Route::get('/user/add', [AdminController::class, 'addUser'])->name('user.add');
 Route::post('/user/save', [AdminController::class, 'UserSave'])->name('user.save');
+Route::post('comments/store', [CommentController::class, 'store'])->name('comments.store');
+Route::get('/post/index', [PostController::class, 'index'])->name('posts.index');
+Route::get('/post/{id}/showPost', [PostController::class, 'showPost'])->name('posts.showPost');

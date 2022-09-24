@@ -42,6 +42,20 @@ class PostController extends Controller
         $post = Post::find($id);
         return redirect()->route('user.home');
     }
+    public function index()
+    {
+        $posts = Post::where('status', 'active')->get();
+
+        return view('posts.index', compact('posts'));
+    }
+    public function showPost($id)
+    {
+        $userId = Session::get('user_id');
+
+        $post = Post::find($id);
+
+        return view('posts.show', compact('post'));
+    }
     public function edit($id)
     {
         $post = Post::find($id);
@@ -73,8 +87,8 @@ class PostController extends Controller
     }
     public function delete($id)
     {
-        $product = Post::find($id);
-        $product->delete();
+        $post = Post::find($id);
+        $post->delete();
 
         return redirect()->route('user.home')->with('success', 'Post deleted successfully');
     }

@@ -79,16 +79,21 @@
 
             <!-- Nav Item - Charts -->
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{url('/user/home') }}">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>My Posts</span></a>
             </li>
 
             <!-- Nav Item - Tables -->
             <li class="nav-item active">
-                <a class="nav-link" href="tables.html">
+                <a class="nav-link" href="{{url('/post/create') }}">
                     <i class="fas fa-fw fa-table"></i>
-                    <span>All Posts</span></a>
+                    <span>Add Post</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{{route('posts.index')}}">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Display All Posts</span></a>
             </li>
 
             <!-- Divider -->

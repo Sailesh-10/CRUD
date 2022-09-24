@@ -40,6 +40,7 @@
                             <td>{{$post->user->first_name}}</td>
 
 
+
                             <td class="text-center">
                                 <a class="btn btn-primary text-white mr-0 mb-0"
                                     href="{{route('status.edit', $post->id)}}">Update Status</a>
