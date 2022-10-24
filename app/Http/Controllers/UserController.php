@@ -7,6 +7,7 @@ use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\File;
 
 class UserController extends Controller
 {
@@ -82,11 +83,16 @@ class UserController extends Controller
         $user->phone = $request->input('phone');
         $user->gender = $request->input('gender');
         $user->dob = $request->input('dob');
-        $user->address = $request->input('address');
-        $image = $request->file('image');
-        $imageName = date('YmdHi') . $image->getClientOriginalName();
-        $image->move(public_path('template/img'), $imageName);
-        $user->image = $imageName;
+        $user->address= $request->input('address');
+        if($request->hasfile('image'))
+        {
+            $$image = $request->file('image'); 
+            $extention=$image->getClientOriginalExtension();
+            $imageName=time().'.'.$extention; 
+            $image->move('template/img/', $imageName);
+            $user->image= $imageName; 
+         
+        }
         $user->save();
 
 
@@ -100,4 +106,59 @@ class UserController extends Controller
         $posts = Post::where('user_id', $userId)->get();
         return view('users.dashboard', ['user' => $user], compact('posts'));
     }
+    public function profile()
+    {
+        $userId = Session::get('user_id');
+
+        $user = User::find($userId);
+        return view('users.profile', ['user' => $user]);
+
+    }
+    public function update(Request $request, $id)
+    {
+
+        $validate = $request->validate([
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'password' => 'required|min:5',
+            'repeat_password' => 'same:password',
+            'gender' => 'required',
+            'phone' => 'required|min:10|max:10',
+            'address' => 'required',
+            'dob' => 'required',
+        ]);
+        $userId = Session::get('user_id');
+        $user = User::find($userId); 
+
+        $user = User::find($id);  
+        $user->first_name = $request->input('first_name');
+        $user->last_name = $request->input('last_name');
+        $user->email = $request->input('email');
+        $user->password = Hash::make($request->input('password'));
+        $user->phone = $request->input('phone');
+        $user->gender = $request->input('gender');
+        $user->dob = $request->input('dob');
+        $user->address= $request->input('address');
+        if($request->hasimage('image'))
+        {
+            $destination = 'template/img/'.$user->image; 
+            if(File::exists($destination)){  
+                File::delete($destination); 
+            }
+
+            $image = $request->file('image'); 
+            $extention=$image->getClientOriginalExtension();
+            $imageName=time().'.'.$extention; 
+            $image->move('template/img/', $imageName);
+            $user->image= $imageName; 
+         
+        }
+       
+        $user->save();
+
+
+        return redirect()->route('users.dashboard')->with('success', 'Profile Updated succesfully.');
+    }
+
+
 }

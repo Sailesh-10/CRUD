@@ -108,4 +108,15 @@ class AdminController extends Controller
 
         return redirect()->route('admin.users')->with('success', 'User Added successfully');
     }
+   
+   
+    
+    public function testimonial()
+    {
+        $userId = Session::get('user_id');
+
+        $user = User::find($userId);
+        return view('admins.testimonial', ['user' => $user]);
+
+    }
 }

@@ -2,7 +2,11 @@
 @section('content')
 
 <div class="container-fluid">
-
+<div class = "card-header">  
+                <a href ="{{route('user.register')}}" class = "btn btn-primary  text-white float-end"> 
+                    Add User 
+                </a>
+        </div>
     <!-- Page Heading -->
     <h1 class="h3 mb-2 text-center text-gray-800">My Posts</h1>
 

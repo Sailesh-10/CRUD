@@ -25,6 +25,9 @@
   <link href="front_template/assets/vendor/aos/aos.css" rel="stylesheet">
   <link href="front_template/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="front_template/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <script src=" /template/vendor/jquery/jquery.min.js"></script>
+  <script src="/template/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <link href="/template/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
   <link href="front_template/assets/css/main.css" rel="stylesheet">
@@ -53,7 +56,7 @@
       <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a href="{{url('/')}}" class="active">Home</a></li>
+        <li><a href="{{url('/')}}" class="active">Home</a></li>
           <li><a href="{{url('about')}}">About</a></li>
           <li><a href="{{url('services')}}">Services</a></li>
           <li><a href="{{url('user/login')}}">Login</a></li>

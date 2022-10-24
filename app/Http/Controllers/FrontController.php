@@ -2,84 +2,35 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Front;
+use App\Models\Slider;
+use App\Models\Services;
+use App\Models\Testimonial;
+use App\Models\Team;
 use Illuminate\Http\Request;
+use App\Models\User;   
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\File;
 
 class FrontController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
+    public function home(){ 
+       
+        $slider= Slider::where('status','0')->get();
+        $service= Services::where('status','0')->get();
+        $testimonial= Testimonial::where('status','0')->get();
+        return view ('home.welcome', compact('slider', 'service', 'testimonial')); 
+    }
+    public function service(){ 
+        $testimonial= Testimonial::where('status','0')->get();
+        $service= Services::where('status','0')->get();
+        return view ('front.services', compact('service', 'testimonial')); 
+    }
+    public function about(){ 
+       
+        $team= Team::where('status','0')->get();
+        return view ('front.about', compact('team')); 
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Front  $front
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Front $front)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Front  $front
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Front $front)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Front  $front
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Front $front)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Front  $front
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Front $front)
-    {
-        //
-    }
+    
 }
