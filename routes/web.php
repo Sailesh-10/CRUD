@@ -25,10 +25,14 @@ use App\Http\Controllers\TeamController;
 Route::get('/', [FrontController::class, 'home'])->name('home');
 
 
-Route::get('/about', function () {return view('front.about');});
+Route::get('/about', function () {
+    return view('front.about');
+});
 Route::get('/about', [FrontController::class, 'about'])->name('about');
 Route::get('/services', [FrontController::class, 'service'])->name('service');
-Route::get('/contact', function () {return view('front.contact');});
+Route::get('/contact', function () {
+    return view('front.contact');
+});
 
 Route::get('/user/login', [UserController::class, 'login'])->name('user.login');
 Route::get('/user/register', [UserController::class, 'register'])->name('user.register');
@@ -45,7 +49,7 @@ Route::get('/post/{id}/edit', [PostController::class, 'edit'])->name('post.edit'
 Route::put('/post/{id}/update', [PostController::class, 'update'])->name('post.update');
 Route::delete('/post/{id}/delete', [PostController::class, 'delete'])->name('post.delete');
 
-  
+
 
 Route::get('/admin/sliders', [SliderController::class, 'slider'])->name('admin.slider');
 Route::get('/admin/add_slider', [SliderController::class, 'slider_form'])->name('front.add_slider');
@@ -76,7 +80,7 @@ Route::put('/update-team/{id}', [TeamController::class, 'update'])->name('update
 Route::delete('/delete-team/{id}', [TeamController::class, 'delete'])->name('team.delete');
 
 Route::get('/admin/login', [AdminController::class, 'login'])->name('admin.login');
-Route::get('/admin/dash', [AdminController::class, 'home'])->name('admin.dash');   
+Route::get('/admin/dash', [AdminController::class, 'home'])->name('admin.dash');
 Route::get('/status/{id}/edit', [AdminController::class, 'StatusEdit'])->name('status.edit');
 Route::put('/status/{id}/update', [AdminController::class, 'StatusUpdate'])->name('status.update');
 Route::delete('/status/{id}/delete', [AdminController::class, 'delete'])->name('status.delete');
@@ -84,3 +88,6 @@ Route::get('/admin/users', [AdminController::class, 'ShowUsers'])->name('admin.u
 Route::delete('/users/{id}/delete', [AdminController::class, 'deleteUser'])->name('user.delete');
 Route::get('/user/add', [AdminController::class, 'addUser'])->name('user.add');
 Route::post('/user/save', [AdminController::class, 'UserSave'])->name('user.save');
+Route::post('comments/store', [CommentController::class, 'store'])->name('comments.store');
+Route::get('/post/index', [PostController::class, 'index'])->name('posts.index');
+Route::get('/post/{id}/showPost', [PostController::class, 'showPost'])->name('posts.showPost');

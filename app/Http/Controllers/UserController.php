@@ -83,15 +83,13 @@ class UserController extends Controller
         $user->phone = $request->input('phone');
         $user->gender = $request->input('gender');
         $user->dob = $request->input('dob');
-        $user->address= $request->input('address');
-        if($request->hasfile('image'))
-        {
-            $$image = $request->file('image'); 
-            $extention=$image->getClientOriginalExtension();
-            $imageName=time().'.'.$extention; 
+        $user->address = $request->input('address');
+        if ($request->hasfile('image')) {
+            $image = $request->file('image');
+            $extention = $image->getClientOriginalExtension();
+            $imageName = time() . '.' . $extention;
             $image->move('template/img/', $imageName);
-            $user->image= $imageName; 
-         
+            $user->image = $imageName;
         }
         $user->save();
 
@@ -112,7 +110,6 @@ class UserController extends Controller
 
         $user = User::find($userId);
         return view('users.profile', ['user' => $user]);
-
     }
     public function update(Request $request, $id)
     {
@@ -128,9 +125,9 @@ class UserController extends Controller
             'dob' => 'required',
         ]);
         $userId = Session::get('user_id');
-        $user = User::find($userId); 
+        $user = User::find($userId);
 
-        $user = User::find($id);  
+        $user = User::find($id);
         $user->first_name = $request->input('first_name');
         $user->last_name = $request->input('last_name');
         $user->email = $request->input('email');
@@ -138,27 +135,23 @@ class UserController extends Controller
         $user->phone = $request->input('phone');
         $user->gender = $request->input('gender');
         $user->dob = $request->input('dob');
-        $user->address= $request->input('address');
-        if($request->hasimage('image'))
-        {
-            $destination = 'template/img/'.$user->image; 
-            if(File::exists($destination)){  
-                File::delete($destination); 
+        $user->address = $request->input('address');
+        if ($request->hasFile('image')) {
+            $destination = 'template/img/' . $user->image;
+            if (File::exists($destination)) {
+                File::delete($destination);
             }
 
-            $image = $request->file('image'); 
-            $extention=$image->getClientOriginalExtension();
-            $imageName=time().'.'.$extention; 
+            $image = $request->file('image');
+            $extention = $image->getClientOriginalExtension();
+            $imageName = time() . '.' . $extention;
             $image->move('template/img/', $imageName);
-            $user->image= $imageName; 
-         
+            $user->image = $imageName;
         }
-       
+
         $user->save();
 
 
-        return redirect()->route('users.dashboard')->with('success', 'Profile Updated succesfully.');
+        return redirect()->route('user.home')->with('success', 'Profile Updated succesfully.');
     }
-
-
 }

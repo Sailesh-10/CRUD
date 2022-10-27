@@ -37,6 +37,7 @@
                         <div>
                             <button type="submit" class="btn btn-primary btn-facebook btn-user btn-block ">Post</button>
                         </div>
+                    </form>
 
                 </div>
             </div>

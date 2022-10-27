@@ -30,28 +30,28 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($users as $user)
+                        @foreach ($users as $user1)
                         <tr>
 
 
-                            <td>{{$user->id}}</td>
+                            <td>{{$user1->id}}</td>
 
                             <td>
                                 <div class="card-body">
 
-                                    <img class=" img-fluid" alt="avatar" src=" {{ url('template/img/'.$user->image) }}"
+                                    <img class=" img-fluid" alt="avatar" src=" {{ url('template/img/'.$user1->image) }}"
                                         style="width: 100px;">
                                 </div>
                             </td>
                             </td>
                             </td>
 
-                            <td>{{$user->first_name}}</td>
-                            <td>{{$user->last_name}}</td>
-                            <td>{{$user->email}}</td>
+                            <td>{{$user1->first_name}}</td>
+                            <td>{{$user1->last_name}}</td>
+                            <td>{{$user1->email}}</td>
 
                             <td>
-                                <form action="{{route('user.delete', $user->id)}}" method="POST">
+                                <form action="{{route('user.delete', $user1->id)}}" method="POST">
                                     @csrf
                                     @method('DELETE')
 

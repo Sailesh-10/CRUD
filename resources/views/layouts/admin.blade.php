@@ -63,19 +63,19 @@
 
 
     <!-- Nav Item - Charts -->
-    
+
     <li class="nav-item">
         <a class="nav-link" href="{{route('admin.slider')}}">
             <i class="fas fa-solid fa-spinner"></i>
             <span>Sliders</span></a>
     </li>
-    
+
     <li class="nav-item">
         <a class="nav-link" href="{{route('admin.service')}}">
             <i class="fas fa-solid fa-cog"></i>
             <span>Services</span></a>
     </li>
-    
+
     <li class="nav-item">
         <a class="nav-link" href="{{route('admin.testimonial')}}">
             <i class="fas fa-solid fa-user-circle"></i>
@@ -93,6 +93,12 @@
             <i class="fas fa-solid fa-user"></i>
             <span>All Users</span></a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{route('user.add')}}">
+            <i class="fas fa-solid fa-user-plus"></i>
+            <span>Add User</span></a>
+    </li>
+
 
 
     <!-- Nav Item - Tables -->
@@ -177,18 +183,7 @@
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                             aria-labelledby="userDropdown">
-                            <a class="dropdown-item" href="#">
-                                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                Profile
-                            </a>
-                            <a class="dropdown-item" href="#">
-                                <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                Settings
-                            </a>
-                            <a class="dropdown-item" href="#">
-                                <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                                Activity Log
-                            </a>
+
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                 <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
